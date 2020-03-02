@@ -73,7 +73,7 @@ class CrabLibrary():
     config.JobType.allowUndistributedCMSSW = True
     config.Data.splitting = 'EventBased' # or 'LumiBased' or 'Automatic' or 'FileBased'
     config.Data.unitsPerJob = int(filesPerJob)
-    NJOBS = 5 #250
+    NJOBS = 100
     config.Data.totalUnits = NJOBS * config.Data.unitsPerJob
     config.Data.outputPrimaryDataset = tagname + "_" + mode + "_" + era + "_" + str(mass) + "_" + str(xangle)
     config.Data.publication = True
