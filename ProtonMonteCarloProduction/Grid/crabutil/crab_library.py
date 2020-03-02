@@ -11,10 +11,19 @@ from CRABAPI.RawCommand import crabCommand
 from CRABClient.ClientExceptions import ClientException
 from CRABClient.UserUtilities import config, getUsernameFromSiteDB
 from httplib import HTTPException
+from multiprocessing import Process
 
 color = colors.Paint()
 
 class CrabLibrary():
+
+  def submit(self, config):
+        try:
+            crabCommand('submit', config = config)
+        except HTTPException as hte:
+            print "Failed submitting task: %s" % (hte.headers)
+        except ClientException as cle:
+            print "Failed submitting task: %s" % (cle)
 
   def doSubmit(self, dataset, mode, era, year, xangle, mass, configfile, filesPerJob, tagname, enable, with_dataset, lfndir, config):
 
@@ -87,7 +96,9 @@ class CrabLibrary():
     config.JobType.pyCfgParams = ["Mode="+mode,"Era="+era,"Mass="+str(mass),"XAngle="+str(xangle)]
 
     if int(enable):
-    	res = crabCommand('submit', config = config)
+	p = Process(target=self.submit, args=(config,))
+	p.start()
+	p.join()
     else:
     	print "\t" + color.BOLD + color.HEADER + "-- Submittion not enabled --" + color.ENDC
 
