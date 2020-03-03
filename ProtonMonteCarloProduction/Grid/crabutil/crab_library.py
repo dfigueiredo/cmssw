@@ -86,7 +86,7 @@ class CrabLibrary():
     print "\t" + color.OKGREEN + str(pathfull) + color.ENDC
 
     if int(with_dataset):
-        config.JobType.pluginName = 'Analysis'
+        config.JobType.pluginName = 'PrivateMC'
         config.Data.inputDataset = dataset
     else:
         config.JobType.pluginName = 'PrivateMC'
