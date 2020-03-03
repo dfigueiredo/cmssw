@@ -64,7 +64,7 @@ process.beamDivergenceVtxGenerator.srcGenParticle = cms.VInputTag(
 
 #output file
 process.out = cms.OutputModule('PoolOutputModule',
-    fileName = cms.untracked.string('miniAOD_withProtons.root'),
+    fileName = cms.untracked.string('output.root'),
     outputCommands = process.AODSIMEventContent.outputCommands,
     splitLevel = cms.untracked.int32(0)
 )
