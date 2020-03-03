@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<samples>
+        <dataset>
+                <name>NULL</name>
+                <enable>1</enable>
+                <with_dataset>0</with_dataset>
+                <type>NULL</type>
+                <era>NULL</era>
+                <year>NULL</year>
+                <xangle>NULL</xangle>
+                <mass>NULL</mass>
+                <config>POMWIG_SingleDiffractiveMinusZee_M20_13TeV_cff_step1.py</config>
+                <eventsperjob>3000</eventsperjob>
+                <tagname>Pomwig-Zee-Minus-GEN</tagname>
+                <outLFNDirBase>NULL</outLFNDirBase>
+        </dataset>
+
+        <dataset>
+                <name>NULL</name>
+                <enable>1</enable>
+                <with_dataset>0</with_dataset>
+                <type>NULL</type>
+                <era>NULL</era>
+                <year>NULL</year>
+                <xangle>NULL</xangle>
+                <mass>NULL</mass>
+                <config>POMWIG_SingleDiffractiveMinusZmumu_M20_13TeV_cff_step1.py</config>
+                <eventsperjob>3000</eventsperjob>
+                <tagname>Pomwig-Zmumu-Minus-GEN</tagname>
+                <outLFNDirBase>NULL</outLFNDirBase>
+        </dataset>
+
+        <dataset>
+                <name>NULL</name>
+                <enable>1</enable>
+                <with_dataset>0</with_dataset>
+                <type>NULL</type>
+                <era>NULL</era>
+                <year>NULL</year>
+                <xangle>NULL</xangle>
+                <mass>NULL</mass>
+                <config>POMWIG_SingleDiffractivePlusZee_M20_13TeV_cff_step1.py</config>
+                <eventsperjob>3000</eventsperjob>
+                <tagname>Pomwig-Zee-Plus-GEN</tagname>
+                <outLFNDirBase>NULL</outLFNDirBase>
+        </dataset>
+
+        <dataset>
+                <name>NULL</name>
+                <enable>1</enable>
+                <with_dataset>0</with_dataset>
+                <type>NULL</type>
+                <era>NULL</era>
+                <year>NULL</year>
+                <xangle>NULL</xangle>
+                <mass>NULL</mass>
+                <config>POMWIG_SingleDiffractivePlusZmumu_M20_13TeV_cff_step1.py</config>
+                <eventsperjob>3000</eventsperjob>
+                <tagname>Pomwig-Zmumu-Plus-GEN</tagname>
+                <outLFNDirBase>NULL</outLFNDirBase>
+        </dataset>
+
+</samples>

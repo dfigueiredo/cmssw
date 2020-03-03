@@ -28,7 +28,26 @@ class CrabLibrary():
   def doSubmit(self, dataset, mode, era, year, xangle, mass, configfile, filesPerJob, tagname, enable, with_dataset, lfndir, config):
 
     timestr = time.strftime("%Y-%m-%d_UTC%H-%M-%S")
-    pathfull = '/store/user/%s/%s_%s_%s_%s_%s_%s/' % (getUsernameFromSiteDB(), tagname, mode, era, mass, xangle, timestr) 
+    parameters = []
+    pathname = tagname
+
+    if mode != "NULL":
+	parameters.append("Mode="+mode)
+        pathname += "_" + mode
+     
+    if era != "NULL":
+        parameters.append("Era="+era)  
+        pathname += "_" + era
+
+    if mass != "NULL":
+        parameters.append("Mass="+str(mass))
+        pathname += "_" + mass
+
+    if xangle != "NULL":
+        parameters.append("Xangle="+str(xangle))
+        pathname += "_" + xangle
+
+    pathfull = '/store/user/%s/%s_%s/' % (getUsernameFromSiteDB(), pathname, timestr) 
 
     print "\t" + color.BOLD + "Dataset: " + color.ENDC,
     print "\t" + color.OKGREEN + dataset + color.ENDC
@@ -54,7 +73,7 @@ class CrabLibrary():
     print "\t" + color.BOLD + "Year: " + color.ENDC,
     print "\t" + color.OKGREEN + str(year) + color.ENDC
 
-    print "\t" + color.BOLD + "Files per Job: " + color.ENDC,
+    print "\t" + color.BOLD + "Events per job (total of 100 jobs is fixed): " + color.ENDC,
     print "\t" + color.OKGREEN + str(filesPerJob) + color.ENDC
 
     print "\t" + color.BOLD + "Enable: " + color.ENDC,
@@ -65,8 +84,6 @@ class CrabLibrary():
 
     print "\t" + color.BOLD + "LFN output dir: " + color.ENDC,
     print "\t" + color.OKGREEN + str(pathfull) + color.ENDC
-
-    timestr = time.strftime("%Y-%m-%d_UTC%H-%M-%S")
 
     if int(with_dataset):
         config.JobType.pluginName = 'Analysis'
@@ -81,25 +98,26 @@ class CrabLibrary():
     config.Data.inputDBS = 'phys03'
     config.JobType.allowUndistributedCMSSW = True
     config.Data.splitting = 'EventBased' # or 'LumiBased' or 'Automatic' or 'FileBased'
+    #config.JobType.numCores = 8
     config.Data.unitsPerJob = int(filesPerJob)
     NJOBS = 100
     config.Data.totalUnits = NJOBS * config.Data.unitsPerJob
-    config.Data.outputPrimaryDataset = tagname + "_" + mode + "_" + era + "_" + str(mass) + "_" + str(xangle)
     config.Data.publication = True
     config.JobType.psetName = configfile
     config.JobType.outputFiles = ['output.root']
+    config.JobType.pyCfgParams = parameters
+    config.Data.outputPrimaryDataset = pathname
     config.General.workArea = 'crab_' + config.Data.outputPrimaryDataset + '_' + timestr
     config.General.requestName = config.Data.outputPrimaryDataset + "_" + timestr
     config.Data.outputDatasetTag = config.Data.outputPrimaryDataset + "_" + timestr
     config.Site.storageSite = 'T2_IT_Pisa' #T2_IT_Pisa, T2_CH_CERNBOX
     config.Data.outLFNDirBase = pathfull
-    config.JobType.pyCfgParams = ["Mode="+mode,"Era="+era,"Mass="+str(mass),"XAngle="+str(xangle)]
 
     if int(enable):
-	p = Process(target=self.submit, args=(config,))
-	p.start()
-	p.join()
+    	p = Process(target=self.submit, args=(config,))
+    	p.start()
+    	p.join()
     else:
-    	print "\t" + color.BOLD + color.HEADER + "-- Submittion not enabled --" + color.ENDC
+        print "\t" + color.BOLD + color.HEADER + "-- Submittion not enabled --" + color.ENDC
 
     print "\n"
