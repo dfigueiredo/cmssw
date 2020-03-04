@@ -86,10 +86,13 @@ class CrabLibrary():
     print "\t" + color.OKGREEN + str(pathfull) + color.ENDC
 
     if int(with_dataset):
-        config.JobType.pluginName = 'PrivateMC'
+        config.JobType.pluginName = 'Analysis'
         config.Data.inputDataset = dataset
+        config.Data.splitting = 'FileBased' # or 'EventBased' or 'LumiBased' or 'Automatic' or 'FileBased'
     else:
+        config.Data.outputPrimaryDataset = pathname
         config.JobType.pluginName = 'PrivateMC'
+        config.Data.splitting = 'EventBased' # or 'EventBased' or 'LumiBased' or 'Automatic' or 'FileBased'
         print "\t" + color.BOLD + color.HEADER + "-- Submittion without dataset --" + color.ENDC
 
     config.General.transferLogs = False
@@ -97,7 +100,6 @@ class CrabLibrary():
     config.JobType.maxMemoryMB = 2500
     config.Data.inputDBS = 'phys03'
     config.JobType.allowUndistributedCMSSW = True
-    config.Data.splitting = 'EventBased' # or 'LumiBased' or 'Automatic' or 'FileBased'
     #config.JobType.numCores = 8
     config.Data.unitsPerJob = int(filesPerJob)
     NJOBS = 100
@@ -106,10 +108,9 @@ class CrabLibrary():
     config.JobType.psetName = configfile
     config.JobType.outputFiles = ['output.root']
     config.JobType.pyCfgParams = parameters
-    config.Data.outputPrimaryDataset = pathname
-    config.General.workArea = 'crab_' + config.Data.outputPrimaryDataset + '_' + timestr
-    config.General.requestName = config.Data.outputPrimaryDataset + "_" + timestr
-    config.Data.outputDatasetTag = config.Data.outputPrimaryDataset + "_" + timestr
+    config.General.workArea = 'crab_' + pathname + '_' + timestr
+    config.General.requestName = pathname + "_" + timestr
+    config.Data.outputDatasetTag = pathname + "_" + timestr
     config.Site.storageSite = 'T2_IT_Pisa' #T2_IT_Pisa, T2_CH_CERNBOX
     config.Data.outLFNDirBase = pathfull
 
