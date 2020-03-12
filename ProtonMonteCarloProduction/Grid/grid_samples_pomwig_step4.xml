@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<samples>
+        <dataset>
+                <name>/Pomwig-Zee-Minus-GEN/dmf-Pomwig-Zee-Minus-SIM_2020-03-11_UTC10-20-24-7a6d450cc21ebea4af58418fae770620/USER</name>
+                <enable>1</enable>
+                <with_dataset>1</with_dataset>
+                <type>NULL</type>
+                <era>NULL</era>
+                <year>NULL</year>
+                <xangle>NULL</xangle>
+                <mass>NULL</mass>
+                <config>step4_cfg.py</config>
+                <eventsperjob>3000</eventsperjob>
+                <tagname>Pomwig-Zee-Minus-PAT</tagname>
+                <outLFNDirBase>NULL</outLFNDirBase>
+        </dataset>
+
+        <dataset>
+                <name>/Pomwig-Zmumu-Minus-GEN/dmf-Pomwig-Zmumu-Minus-SIM_2020-03-11_UTC10-21-03-7a6d450cc21ebea4af58418fae770620/USER</name>
+                <enable>1</enable>
+                <with_dataset>1</with_dataset>
+                <type>NULL</type>
+                <era>NULL</era>
+                <year>NULL</year>
+                <xangle>NULL</xangle>
+                <mass>NULL</mass>
+                <config>step4_cfg.py</config>
+                <eventsperjob>3000</eventsperjob>
+                <tagname>Pomwig-Zmumu-Minus-PAT</tagname>
+                <outLFNDirBase>NULL</outLFNDirBase>
+        </dataset>
+
+        <dataset>
+                <name>/Pomwig-Zee-Plus-GEN/dmf-Pomwig-Zee-Plus-SIM_2020-03-11_UTC10-21-33-7a6d450cc21ebea4af58418fae770620/USER</name>
+                <enable>1</enable>
+                <with_dataset>1</with_dataset>
+                <type>NULL</type>
+                <era>NULL</era>
+                <year>NULL</year>
+                <xangle>NULL</xangle>
+                <mass>NULL</mass>
+                <config>step4_cfg.py</config>
+                <eventsperjob>3000</eventsperjob>
+                <tagname>Pomwig-Zee-Plus-PAT</tagname>
+                <outLFNDirBase>NULL</outLFNDirBase>
+        </dataset>
+
+        <dataset>
+                <name>/Pomwig-Zmumu-Plus-GEN/dmf-Pomwig-Zmumu-Plus-SIM_2020-03-11_UTC10-22-03-7a6d450cc21ebea4af58418fae770620/USER</name>
+                <enable>1</enable>
+                <with_dataset>1</with_dataset>
+                <type>NULL</type>
+                <era>NULL</era>
+                <year>NULL</year>
+                <xangle>NULL</xangle>
+                <mass>NULL</mass>
+                <config>step4_cfg.py</config>
+                <eventsperjob>3000</eventsperjob>
+                <tagname>Pomwig-Zmumu-Plus-PAT</tagname>
+                <outLFNDirBase>NULL</outLFNDirBase>
+        </dataset>
+
+</samples>
