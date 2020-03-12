@@ -44,7 +44,7 @@ class CrabLibrary():
         pathname += "_" + mass
 
     if xangle != "NULL":
-        parameters.append("Xangle="+str(xangle))
+        parameters.append("XAngle="+str(xangle))
         pathname += "_" + xangle
 
     pathfull = '/store/user/%s/%s_%s/' % (getUsernameFromSiteDB(), pathname, timestr) 
@@ -89,10 +89,17 @@ class CrabLibrary():
         config.JobType.pluginName = 'Analysis'
         config.Data.inputDataset = dataset
         config.Data.splitting = 'FileBased' # or 'EventBased' or 'LumiBased' or 'Automatic' or 'FileBased'
+        config.Data.unitsPerJob = 1
+        NJOBS = 100
+        #config.Data.totalUnits = -1
+
     else:
         config.Data.outputPrimaryDataset = pathname
         config.JobType.pluginName = 'PrivateMC'
         config.Data.splitting = 'EventBased' # or 'EventBased' or 'LumiBased' or 'Automatic' or 'FileBased'
+        config.Data.unitsPerJob = int(filesPerJob)
+        NJOBS = 100
+        config.Data.totalUnits = NJOBS * config.Data.unitsPerJob
         print "\t" + color.BOLD + color.HEADER + "-- Submittion without dataset --" + color.ENDC
 
     config.General.transferLogs = False
@@ -101,9 +108,6 @@ class CrabLibrary():
     config.Data.inputDBS = 'phys03'
     config.JobType.allowUndistributedCMSSW = True
     #config.JobType.numCores = 8
-    config.Data.unitsPerJob = int(filesPerJob)
-    NJOBS = 100
-    config.Data.totalUnits = NJOBS * config.Data.unitsPerJob
     config.Data.publication = True
     config.JobType.psetName = configfile
     config.JobType.outputFiles = ['output.root']
