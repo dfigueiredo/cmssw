@@ -29,7 +29,7 @@ process.maxEvents = cms.untracked.PSet(
 
 # Input source
 process.source = cms.Source("PoolSource",
-    fileNames = cms.untracked.vstring('file:output.root'),
+    fileNames = cms.untracked.vstring('file:input.root'),
     secondaryFileNames = cms.untracked.vstring()
 )
 
@@ -56,7 +56,7 @@ process.MINIAODSIMoutput = cms.OutputModule("PoolOutputModule",
     dropMetaData = cms.untracked.string('ALL'),
     eventAutoFlushCompressedSize = cms.untracked.int32(-900),
     fastCloning = cms.untracked.bool(False),
-    fileName = cms.untracked.string('file:miniAOD.root'),
+    fileName = cms.untracked.string('file:output.root'),
     outputCommands = process.MINIAODSIMEventContent.outputCommands,
     overrideBranchesSplitLevel = cms.untracked.VPSet(cms.untracked.PSet(
         branch = cms.untracked.string('patPackedCandidates_packedPFCandidates__*'),
